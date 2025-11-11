@@ -1,0 +1,14 @@
+name: GuideBook
+version: '1.0-SNAPSHOT'
+main: net.lordofthetimes.guideBook.GuideBook
+api-version: '1.21'
+commands:
+  howto:
+    description: Open a book with links to tutorials
+    usage: /<command>
+    permission: guidebook.open
+
+permissions:
+  guidebook.open:
+    description: Allows the player to open the Guide Book
+    default: true

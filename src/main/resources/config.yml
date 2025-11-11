@@ -1,0 +1,10 @@
+howto:
+  content:
+    - "<green>Welcome to the <bold>server!</bold></green>"
+    - link:
+        text: "<blue><underlined>Click here for Paper docs</underlined></blue>"
+        url: "https://docs.papermc.io/"
+    - "<gray>Another line</gray>"
+    - link:
+          text: "<gold><bold>Server store</bold></gold>"
+          url: "https://wayhaven.tebex.io/"
