@@ -9,19 +9,21 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 
-public class HowToCommand implements CommandExecutor {
+public class HowToCommand implements CommandExecutor, TabCompleter {
 
 
     private JavaPlugin plugin;
@@ -31,22 +33,24 @@ public class HowToCommand implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
+    public boolean onCommand(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
         if (commandSender instanceof Player player) {
-            if (!player.hasPermission("guidebook.open")) {
-                player.sendMessage("You don't have permission to use this command!");
+            if (!player.hasPermission("guidebook.howto")) {
+                player.sendMessage(MiniMessage.miniMessage().deserialize("<red><bold>[GuideBook] You don't have permission for this command!</bold></red>"));
                 return true;
             }
-
+            if(args.length != 1){
+                player.sendMessage(MiniMessage.miniMessage().deserialize("<red><bold>[GuideBook] Wrong amount of arguments, correct format /howto <name> !</bold></red>"));
+            }
             Bukkit.getScheduler().runTask(plugin, () -> {
-                openBook(player);
+                openBook(player, args[0]);
             });
             return true;
         }
         return false;
     }
 
-    private void openBook(Player player) {
+    private void openBook(Player player, String id) {
         ItemStack bookItem = new ItemStack(Material.WRITTEN_BOOK);
         BookMeta meta = (BookMeta) bookItem.getItemMeta();
 
@@ -54,12 +58,12 @@ public class HowToCommand implements CommandExecutor {
         meta.setAuthor("GuideBook");
 
 
-        ConfigurationSection book = this.plugin.getConfig().getConfigurationSection("book");
+        ConfigurationSection book = this.plugin.getConfig().getConfigurationSection("books."+id);
 
         if (book == null) {
             // Book doesn't exist at all
             player.sendMessage(
-                    MiniMessage.miniMessage().deserialize("<red><bold>[GuideBook] The book has not beed configured!</bold></red>"));
+                    MiniMessage.miniMessage().deserialize("<red><bold>[GuideBook] The book has not exist!</bold></red>"));
         } else if (book.getKeys(false).isEmpty()) {
             // Book exists but has no pages
             player.sendMessage(
@@ -100,7 +104,13 @@ public class HowToCommand implements CommandExecutor {
 
             player.openBook(bookItem);
         }
+    }
 
-
+    @Override
+    public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
+        if(args.length == 1){
+            return new ArrayList<>(this.plugin.getConfig().getConfigurationSection("books").getKeys(false)) ;
+        }
+        return List.of();
     }
 }

@@ -6,10 +6,10 @@ commands:
   howto:
     description: Open a book with links to tutorials
     usage: /<command>
-    permission: guidebook.open
+    permission: guidebook.howto
     aliases: guidebook
 
 permissions:
-  guidebook.open:
+  guidebook.howto:
     description: Allows the player to open the Guide Book
     default: true

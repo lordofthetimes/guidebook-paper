@@ -1,14 +1,32 @@
-book:
-  page1:
-    - "<green>Welcome to the <bold>server!</bold></green>"
-    - text: "<blue><underlined>Click here for Paper docs</underlined></blue>"
-      url: "https://docs.papermc.io/"
-    - "<gray>Another line</gray>"
-    - text: "<gold><bold>Server store</bold></gold>"
-      url: "https://wayhaven.tebex.io/"
-    - text: "You can also hover over this link"
-      url: "https://wayhaven.tebex.io/"
-      hover: "<gold>This link open server store</gold>"
-  page2:
-  page3:
-    - "Page 3"
+books:
+  test:
+    page1:
+      - "<green>Welcome to the <bold>server!</bold></green>"
+      - text: "<blue><underlined>Click here for Paper docs</underlined></blue>"
+        url: "https://docs.papermc.io/"
+      - "<gray>Another line</gray>"
+      - text: "<gold><bold>Server store</bold></gold>"
+        url: "https://wayhaven.tebex.io/"
+      - text: "You can also hover over this link"
+        url: "https://wayhaven.tebex.io/"
+        hover: "<gold>This link open server store</gold>"
+    page2:
+    page3:
+      - "Page 3"
+  rankbenefits:
+    page1:
+      - "You can obtain ranks through multiple avenues. 
+        Below details all of the current ranks and how to obtain them."
+      - ""
+      - text: "• <green>Mapmaker</green> Rank"
+        hover: "<green>‣ Making imageframes\n‣ Mapmaker prefix in-game</green>\n<gray>Obtainable by becoming a cartographer in the Cartography Guild and making maps consistently.</gray>"
+      - text: "• <red>News</red> Rank"
+        hover: "<red>‣ Making imageframes\n‣ News prefix in-game</red>\n<gray>Obtainable by becoming a newsperson (Open a ticket on discord and provide an example of what your news might look like!) and posting news consistently.</gray>"
+      - text: "• <gold>Gold Rank</gold> Rank"
+        hover: "<gold>‣ /stonecutter\n‣ /loom\n‣ /smithingtable\n‣ Making imageframes\n‣ Gold prefix in-game</gold>\n<gray>Obtainable through purchasing on the store or through referring 100 people.</gray>"
+      - text: "• <red>News</red> Rank"
+        hover: "<red>‣ Making imageframes\n‣ News prefix in-game</red>\n<gray>Obtainable by becoming a newsperson (Open a ticket on discord and provide an example of what your news might look like!) and posting news consistently.</gray>"
+      - text: "• <red>News</red> Rank"
+        hover: "<red>‣ Making imageframes\n‣ News prefix in-game</red>\n<gray>Obtainable by becoming a newsperson (Open a ticket on discord and provide an example of what your news might look like!) and posting news consistently.</gray>"
+      - text: "• <red>News</red> Rank"
+        hover: "<red>‣ Making imageframes\n‣ News prefix in-game</red>\n<gray>Obtainable by becoming a newsperson (Open a ticket on discord and provide an example of what your news might look like!) and posting news consistently.</gray>"
