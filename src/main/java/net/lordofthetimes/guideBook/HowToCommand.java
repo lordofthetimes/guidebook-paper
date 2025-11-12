@@ -21,6 +21,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 
 public class HowToCommand implements CommandExecutor, TabCompleter {
@@ -108,8 +109,17 @@ public class HowToCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String @NotNull [] args) {
-        if(args.length == 1){
-            return new ArrayList<>(this.plugin.getConfig().getConfigurationSection("books").getKeys(false)) ;
+        if(commandSender instanceof Player player){
+            if(args.length == 1){
+                List<String> list = new ArrayList<>();
+                Set<String> books = this.plugin.getConfig().getConfigurationSection("books").getKeys(false);
+                for(String id : books){
+                    if(player.hasPermission("guidebook.howto."+id)){
+                        list.add(id);
+                    }
+                }
+                return list;
+            }
         }
         return List.of();
     }
