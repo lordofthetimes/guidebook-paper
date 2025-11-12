@@ -1,10 +1,14 @@
-howto:
-  content:
+book:
+  page1:
     - "<green>Welcome to the <bold>server!</bold></green>"
-    - link:
-        text: "<blue><underlined>Click here for Paper docs</underlined></blue>"
-        url: "https://docs.papermc.io/"
+    - text: "<blue><underlined>Click here for Paper docs</underlined></blue>"
+      url: "https://docs.papermc.io/"
     - "<gray>Another line</gray>"
-    - - link:
-          text: "<gold><bold>Server store</bold></gold>"
-          url: "https://wayhaven.tebex.io/"
+    - text: "<gold><bold>Server store</bold></gold>"
+      url: "https://wayhaven.tebex.io/"
+    - text: "You can also hover over this link"
+      url: "https://wayhaven.tebex.io/"
+      hover: "<gold>This link open server store</gold>"
+  page2:
+  page3:
+    - "Page 3"
